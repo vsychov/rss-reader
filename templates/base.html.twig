@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}RSS Reader - {% endblock %}</title>
+        {{ encore_entry_link_tags('app') }}
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% block header %}
+        {% endblock %}
+        <main role="main" class="container">
+            {% block body %}{% endblock %}
+        </main>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

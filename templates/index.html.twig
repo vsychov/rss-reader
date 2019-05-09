@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+    <header>
+        <div class="navbar navbar-dark bg-dark box-shadow">
+            <div class="container d-flex justify-content-between">
+                <h1 class="text-white">RSS Feed, delfi</h1>
+            </div>
+            <div class="pull-left">
+                <span class="text-white">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</span>
+                <a class="btn btn-light" href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </header>
+{% endblock %}
+{% block body %}
+    {% for item in rss %}
+    <div class="col-md-12">
+        <div class="card mb-4 box-shadow">
+            <div class="card-body">
+                <h4>{{ item.title }}</h4>
+                {% for element in item.getAllElements %}
+                    {% if element.getAttributes.url is defined %}
+                        <img class="float-left" border="0" style="padding-right: 10px;" src="{{ element.getAttributes.url }}"/>
+                    {% endif %}
+                {% endfor %}
+                <p class="card-text">{{ item.description|raw }}</p><br/>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a href="{{ item.link }}" target="_blank" class="btn btn-sm btn-outline-secondary">{{ 'read more'|trans }}</a>
+                    </div>
+                    <small class="text-muted">{{ item.lastModified.format('Y-m-d H:i:s') }}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

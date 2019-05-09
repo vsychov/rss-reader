@@ -1,0 +1,31 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'),
+    'attr': {'id': 'registerForm', '@submit': 'handleFormSubmitEvent', 'class': 'form-middle fos_user_registration_register' }}) }}
+
+<h1 class="h3 mb-3 font-weight-normal">{{ 'Account creation'|trans }}</h1>
+{{ form_label(form.email, null, {'label_attr': {'class': 'sr-only'}}) }}
+{{ form_widget(form.email, {'attr': {'ref': 'email', 'v-bind:class': '!emailValid ? "has-error" : null', 'v-on:keyup': 'validateEmail',  '@change': 'validateEmail', 'v-model': 'email', 'class': 'form-control', 'placeholder': form.email.vars.label}}) }}
+<div class="form-error">
+    <ul v-cloak v-if="!emailValid"><li>The email is already used.</li></ul>
+    {{ form_errors(form.email) }}
+</div>
+
+{{ form_label(form.plainPassword.first, null, {'label_attr': {'class': 'sr-only'}}) }}
+{{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control middlePassword', 'placeholder': form.plainPassword.first.vars.label}}) }}
+<div class="form-error">
+    {{ form_errors(form.plainPassword.first) }}
+</div>
+
+{{ form_label(form.plainPassword.second, null, {'label_attr': {'class': 'sr-only'}}) }}
+    {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control lastPassword', 'placeholder': form.plainPassword.second.vars.label}}) }}
+<div class="form-error">
+    {{ form_errors(form.plainPassword.second) }}
+</div>
+
+<div>
+    <input class="btn btn-lg btn-primary btn-block" type="submit" id="_submit" name="_submit"
+           value="{{ 'registration.submit'|trans }}"/>
+    <a class="btn btn-lg btn-dark btn-block" href="{{ path('fos_user_security_login') }}">{{ 'Log in'|trans }}</a>
+</div>
+{{ form_end(form) }}
