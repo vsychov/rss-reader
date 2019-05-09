@@ -22,5 +22,7 @@ and then run `php bin/console server:run`
 
 # Screenshots
 Main page: https://www.dropbox.com/s/nk776yc523ogphm/Screenshot%202019-05-09%2018.28.42.png?dl=0
+
 Login page: https://www.dropbox.com/s/4kianprs4q41bdo/Screenshot%202019-05-09%2018.29.00.png?dl=0
+
 Register page: https://www.dropbox.com/s/u904nrtxcxtnhd1/Screenshot%202019-05-09%2018.29.16.png?dl=0
