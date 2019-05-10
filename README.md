@@ -1,4 +1,4 @@
-Home assignment: 
+# Task
 
 Your task is to create simple RSS reader web application with following views:
  1) User registration - form with e-mail and password fields + e-mail verification using ajax. 
@@ -17,6 +17,8 @@ Please send the code (archive or link to github) and instructions how to set it 
 yarn install
 yarn build
 composer install
+
+execute migrations `php bin/console doctrine:m:up`
 
 and then run `php bin/console server:run`
 
